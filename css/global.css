@@ -1,0 +1,52 @@
+/* RESET & TOKENS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #D1202D;
+  --color-secondary: #F49CBB;
+  --color-bg-main: #F0EEE6;
+  --color-bg-hero: #CBEEF3;
+  --color-text: #24110C;
+  
+  --font-display: 'La Belle Aurore', cursive;
+  --font-ui: 'Inter', sans-serif;
+}
+
+body {
+  font-family: var(--font-ui);
+  background-color: var(--color-bg-main);
+  color: var(--color-text);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 800; /* Extra Bold per GEMINI.md */
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn--primary {
+  background: linear-gradient(180deg, #F49CBB 0%, #FFCDDE 100%);
+  color: white;
+  box-shadow: 0 4px 10px rgba(209, 32, 45, 0.2);
+}
+
+.btn--primary:active {
+  transform: translateY(2px);
+  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1);
+}

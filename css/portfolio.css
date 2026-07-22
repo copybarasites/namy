@@ -1,0 +1,299 @@
+
+/* =========================================
+   PORTFÓLIO
+========================================= */
+
+.portfolio {
+  position: relative;
+  width: 10 0%;
+  padding: 0;
+  margin-top: -1.5rem;
+  margin-bottom: -120px; /* Overlap matching card radius */
+  z-index: 20; /* High z-index to stay on top of CTA */
+}
+
+/* =========================================
+   CARD PRINCIPAL
+========================================= */
+
+.portfolio__card {
+  position: relative;
+
+  width: 100%;
+  margin: 0 auto;
+
+  padding: 2.2rem 2.4rem 2.4rem;
+
+  background: #cbeef3;
+
+  border-radius: 40px;
+
+  box-shadow:
+    0 -10px 20px rgba(36, 17, 12, 0.18),
+    0 10px 22px rgba(36, 17, 12, 0.18),
+    inset -9px -9px 20px #add0d5,
+    inset 9px 9px 21px #b9dde3;
+
+  overflow: hidden;
+}
+
+/* brilho suave interno */
+
+.portfolio__card::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.22) 0%,
+      rgba(255,255,255,0) 28%
+    );
+
+  pointer-events: none;
+}
+
+/* =========================================
+   CONTAINER / GRID
+========================================= */
+
+.portfolio__grid {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* Garante que o grid ocupe toda a largura disponível */
+}
+
+.portfolio__video-side {
+  width: 100%; /* Libera a largura para o vídeo crescer */
+  display: flex;
+  justify-content: center;
+}
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.portfolio__title {
+  font-family: var(--font-display);
+
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 0.8;
+  text-align: center;
+  color: #d1202d;
+
+  margin: 0 0 2rem;
+}
+
+/* =========================================
+   VÍDEO
+========================================= */
+
+.portfolio__video-wrapper {
+  position: relative;
+
+  width: 100%;
+  max-width: 500px; /* Valor base mobile solicitado */
+  aspect-ratio: 9 / 16;
+
+  overflow: hidden;
+
+  border-radius: 42px;
+
+  border: 5px solid #f49cbb;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 10px 20px rgba(36, 17, 12, 0.14),
+    inset 0 0 0 1px rgba(255,255,255,0.35);
+}
+
+.portfolio__video-wrapper video,
+.portfolio__video-wrapper img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  display: block;
+}
+
+/* =========================================
+   TECLADO / BOTÕES
+========================================= */
+
+.portfolio__buttons {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 0.9rem 0.9rem;
+
+  margin-top: 1.6rem;
+}
+
+/* =========================================
+   BOTÃO
+========================================= */
+
+.portfolio__btn {
+  position: relative;
+  width: 161px; /* Largura exata do SVG mobile */
+  height: 60px; /* Altura exata do SVG mobile */
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* Hover apenas se NÃO estiver ativo */
+.portfolio__btn:not(.is-active):hover .portfolio__btn-bg--mobile rect {
+  fill: url(#paint0_linear_active_mobile);
+  stroke: url(#paint1_linear_active_mobile);
+}
+.portfolio__btn:not(.is-active):hover .portfolio__btn-bg--desktop rect {
+  fill: url(#paint0_linear_active_desktop);
+  stroke: url(#paint1_linear_active_desktop);
+}
+
+/* Estado Ativo (Pressionado) */
+.portfolio__btn.is-active {
+  pointer-events: none; /* Evita múltiplos cliques no mesmo botão */
+}
+
+.portfolio__btn.is-active .portfolio__btn-bg--mobile rect {
+  fill: url(#paint0_linear_active_mobile);
+  stroke: url(#paint1_linear_active_mobile);
+}
+.portfolio__btn.is-active .portfolio__btn-bg--desktop rect {
+  fill: url(#paint0_linear_active_desktop);
+  stroke: url(#paint1_linear_active_desktop);
+}
+
+.portfolio__btn-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.portfolio__btn-bg rect {
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+.portfolio__btn-bg--desktop {
+  display: none;
+}
+
+.portfolio__btn-label {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-ui);
+  font-weight: 800;
+  font-size: 18px;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+
+
+/* =========================================
+   DESKTOP
+========================================= */
+
+@media (min-width: 768px) {
+
+  .portfolio {
+    padding-bottom: 6rem;
+  }
+
+  .portfolio__card {
+    max-width: 1180px;
+
+    /* Bordas assimétricas orgânicas */
+    border-radius: 60px 180px 60px 60px;
+
+    padding:
+      4rem
+      4rem
+      4.5rem;
+  }
+
+  .portfolio__grid {
+    display: grid;
+
+    grid-template-columns:
+      minmax(320px, 420px)
+      minmax(320px, 420px);
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5rem;
+  }
+
+  .portfolio__video-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Garante que o container ocupe o espaço da coluna */
+  }
+
+  .portfolio__title {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    text-align: right; 
+    align-self: flex-start;
+    width: 830px;
+
+    position: absolute;
+    transform: translate(50px, 80px);
+  }
+
+  .portfolio__video-wrapper {
+    max-width: 500px; /* Aumentado conforme solicitado */
+    border-width: 6px;
+    width: 100%;
+  }
+
+  .portfolio__btn-bg--mobile {
+    display: none;
+  }
+
+  .portfolio__btn-bg--desktop {
+    display: block;
+  }
+
+  .portfolio__buttons {
+    grid-template-columns: 1fr; /* Um botão abaixo do outro */
+    gap: 1.5rem;
+    max-width: 280px;
+    margin-top: 5rem;
+    transform: translate(-50px);
+  }
+
+  .portfolio__btn {
+    height: 72px; /* Reverting to original height as per user request to 'redo previous desktop' */
+    width: 500px; /* Reverting to original width as per user request */
+  }
+
+  .portfolio__btn-label {
+    font-size: 1.25rem;
+  }
+}
+
